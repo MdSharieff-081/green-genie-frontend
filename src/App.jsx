@@ -1,6 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Sun, Wind, Zap, Droplets, Menu, X, Moon, MessageCircle, Trash2, Send, Home, Info, Bot } from 'lucide-react';
 import "./styles.css";
+import { postData } from './Services/api';
+import ReactMarkdown from 'react-markdown';
+
 
 // Router Hook Simulation
 const useRouter = () => {
@@ -134,7 +137,7 @@ const HomePage = ({ navigate, darkMode }) => {
             <div className="hero-buttons">
               <button onClick={() => navigate('chatbot')} className="btn-primary">
                 <MessageCircle size={20} />
-                <span>Ask Our Energy Assistant</span>
+                <span>Ask Green Genie, Your Energy Assistant</span>
               </button>
               <button className="btn-secondary">Learn More</button>
             </div>
@@ -202,7 +205,7 @@ const ChatbotPage = ({ darkMode }) => {
     {
       id: 1,
       type: 'bot',
-      content: 'Hello! I\'m your renewable energy assistant. Ask me anything about solar, wind, hydro, or other clean energy topics!',
+      content: 'Hello! I\'m Green Genie ,your renewable energy assistant. Ask me anything about solar, wind, hydro, or other clean energy topics!',
       timestamp: new Date()
     }
   ]);
@@ -218,28 +221,6 @@ const ChatbotPage = ({ darkMode }) => {
     scrollToBottom();
   }, [messages]);
 
-  // Dummy responses for demonstration
-  const getBotResponse = (userMessage) => {
-    const responses = {
-      solar: "Solar energy is one of the fastest-growing renewable energy sources! Solar panels convert sunlight into electricity using photovoltaic cells. They're becoming more affordable and efficient every year. Would you like to know about installation costs or benefits?",
-      wind: "Wind energy harnesses the kinetic energy of moving air through wind turbines. Modern wind farms can generate massive amounts of clean electricity. Wind power is now one of the cheapest forms of electricity in many regions!",
-      hydro: "Hydroelectric power uses flowing water to generate electricity. It's one of the oldest and most reliable renewable energy sources. Large dams can provide consistent power for decades, and small-scale hydro systems are great for rural communities.",
-      cost: "The cost of renewable energy has dropped dramatically! Solar costs have fallen by over 80% in the past decade. Wind power is now competitive with fossil fuels in many markets. Plus, once installed, the 'fuel' (sun, wind, water) is free!",
-      environment: "Renewable energy produces little to no greenhouse gas emissions during operation. This helps combat climate change, reduces air pollution, and protects our environment for future generations. Every kWh of clean energy makes a difference!",
-      default: "That's a great question about renewable energy! I can help you learn about solar panels, wind turbines, hydroelectric power, costs, environmental benefits, and much more. What specific aspect interests you most?"
-    };
-
-    const message = userMessage.toLowerCase();
-    
-    if (message.includes('solar')) return responses.solar;
-    if (message.includes('wind')) return responses.wind;
-    if (message.includes('hydro') || message.includes('water')) return responses.hydro;
-    if (message.includes('cost') || message.includes('price') || message.includes('cheap')) return responses.cost;
-    if (message.includes('environment') || message.includes('climate') || message.includes('pollution')) return responses.environment;
-    
-    return responses.default;
-  };
-
   const handleSendMessage = async () => {
     if (!inputMessage.trim()) return;
 
@@ -254,18 +235,31 @@ const ChatbotPage = ({ darkMode }) => {
     setInputMessage('');
     setIsTyping(true);
 
-    // Simulate API call delay
-    setTimeout(() => {
+    try {
+      const response = await postData(inputMessage); // wait for the API response
+  
       const botResponse = {
         id: messages.length + 2,
         type: 'bot',
-        content: getBotResponse(inputMessage),
+        content: response?.answer || "Sorry, I didn’t get that.",
         timestamp: new Date()
       };
-      
+  
       setMessages(prev => [...prev, botResponse]);
+    } catch (error) {
+      const errorResponse = {
+        id: messages.length + 2,
+        type: 'bot',
+        content: "Oops! Something went wrong.",
+        timestamp: new Date()
+      };
+  
+      setMessages(prev => [...prev, errorResponse]);
+      console.error(error);
+    } finally {
       setIsTyping(false);
-    }, 1000 + Math.random() * 1000);
+    }
+
   };
 
   const clearChat = () => {
@@ -307,7 +301,7 @@ const ChatbotPage = ({ darkMode }) => {
             {messages.map((message) => (
               <div key={message.id} className={`message ${message.type}`}>
                 <div className="message-content">
-                  <p>{message.content}</p>
+                  <ReactMarkdown>{message.content}</ReactMarkdown>
                   <p className="message-time">
                     {message.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                   </p>
