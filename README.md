@@ -58,7 +58,7 @@ This chatbot aims to:
 
 ```bash
 # Clone the repo
-git clone https://github.com/yourusername/renewable-energy-chatbot.git
+git clone https://github.com/MdSharieff-081/renewable-energy-chatbot.git
 cd renewable-energy-chatbot
 
 # Backend setup
