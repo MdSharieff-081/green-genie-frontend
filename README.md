@@ -42,7 +42,7 @@ This chatbot aims to:
 | -------------------- | --------------------------------- |
 | Vijaya Vardhan Killi | Backend (Flask, LangChain, FAISS) |
 | Davud Shaik          | Testing & research support        |
-| Md C Madeena Sharieff| Frontend (UI, integration)        |
+| Md Sharieff          | Frontend (UI, integration)        |
 | Rajesh Mummidi       | Documentation & content review    |
 
 
@@ -74,7 +74,7 @@ npm start
 
 ```
 
-📚 Data Sources
+## 📚 Data Sources
 
 MNRE (Ministry of New and Renewable Energy, India)
 
@@ -86,7 +86,7 @@ Clean energy blogs and PDFs (converted into chunks)
 
 
 
-💡 Future Enhancements
+## 💡 Future Enhancements
 
 📲 Add voice support for accessibility
 
@@ -100,17 +100,17 @@ Clean energy blogs and PDFs (converted into chunks)
 
 
 
-🧑‍💻 Contributing
+## 🧑‍💻 Contributing
 
 Contributions are welcome! Please open issues and submit pull requests for improvements, bug fixes, or content updates.
 
 
-📜 License
+## 📜 License
 
 This project is licensed under the MIT License.
 
 
-🙌 Acknowledgements
+## 🙌 Acknowledgements
 
 OpenAI
 
