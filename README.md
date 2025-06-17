@@ -84,6 +84,8 @@ Academic & government research papers
 
 Clean energy blogs and PDFs (converted into chunks)
 
+
+
 💡 Future Enhancements
 
 📲 Add voice support for accessibility
@@ -96,13 +98,17 @@ Clean energy blogs and PDFs (converted into chunks)
 
 🌐 Multi-language support
 
+
+
 🧑‍💻 Contributing
 
 Contributions are welcome! Please open issues and submit pull requests for improvements, bug fixes, or content updates.
 
+
 📜 License
 
 This project is licensed under the MIT License.
+
 
 🙌 Acknowledgements
 
