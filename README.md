@@ -41,8 +41,8 @@ This chatbot aims to:
 | Member               | Role                              |
 | -------------------- | --------------------------------- |
 | Vijaya Vardhan Killi | Backend (Flask, LangChain, FAISS) |
-| Davud Shaik          | Testing & research support        |
 | Md Sharieff          | Frontend (UI, integration)        |
+| Davud Shaik          | Testing & research support        |
 | Rajesh Mummidi       | Documentation & content review    |
 
 
