@@ -54,6 +54,7 @@ This chatbot aims to:
 4. **AI Response** – A language model (LLM) processes the context and generates a user-friendly answer.
 5. **Response Delivery** – The chatbot displays the answer in real time.
 
+
 ## 📦 Installation
 
 ```bash
@@ -74,6 +75,7 @@ npm start
 ```
 
 📚 Data Sources
+
 MNRE (Ministry of New and Renewable Energy, India)
 
 UN SDG resources
@@ -83,6 +85,7 @@ Academic & government research papers
 Clean energy blogs and PDFs (converted into chunks)
 
 💡 Future Enhancements
+
 📲 Add voice support for accessibility
 
 🔒 Student/Teacher login system
@@ -94,12 +97,15 @@ Clean energy blogs and PDFs (converted into chunks)
 🌐 Multi-language support
 
 🧑‍💻 Contributing
+
 Contributions are welcome! Please open issues and submit pull requests for improvements, bug fixes, or content updates.
 
 📜 License
+
 This project is licensed under the MIT License.
 
 🙌 Acknowledgements
+
 OpenAI
 
 Gemini
